@@ -248,4 +248,9 @@ void DefaultTVM::update()
 	bp = TVM->getBp();
 	if (bp == 1)
 		BP.afficher(V2f(54 + 140 - 36, 274));			//F5
+
+	covit = TVM->getCovit();
+	if (covit ==1 )
+		ST_01.afficher(V2f(54 / 2, 54 + 30 + 191 + 25 + 25 + 12.5));
+
 }

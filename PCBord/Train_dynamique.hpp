@@ -14,7 +14,7 @@ class Train_dynamique
 	double deltats;//créer la variable qui stocke le temps écoulé en seconde
 	double distance_update; // distance parcourue entre chaque mise à jour
 	int traction=510;
-	int masse=425; // masse à récupérer dans la class réseau
+	int masse=42; // masse à récupérer dans la class réseau
 	double A=2.7;
 	double B=0.032;
 	double C=0.00053;    // les valeurs A B C seront à récupéré dans la class réseau

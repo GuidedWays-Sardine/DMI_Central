@@ -1,8 +1,9 @@
 #include "TVM_Bord.hpp"
 
-TVM_Bord::TVM_Bord(Reseau &Res)
+TVM_Bord::TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique)
 {
 	this->Res = &Res;
+	this->train_dynamique = &train_dynamique;
 }
 
 void TVM_Bord::update() {
@@ -11,7 +12,7 @@ void TVM_Bord::update() {
 	selfTimer = Res->getSelfTimer();
 	side = Res->getSideFrequency();
 
-	mainFrequency = 13.6;
+	mainFrequency = 29;
 
 	if (mainFrequency == 11.4)
 		indication = "300V";
@@ -39,6 +40,37 @@ void TVM_Bord::update() {
 		indication = "000R";
 	else if (mainFrequency == 29)
 		indication = "RRRR";
+
+	vitesse = train_dynamique->getV_train();
+
+	if (mainFrequency == 11.4 && vitesse > 315)
+		covit = 1;
+	else if (mainFrequency == 13.6 && vitesse > 315)
+		covit = 1;
+	else if (mainFrequency == 10.3 && vitesse > 285)
+		covit = 1;
+	else if (mainFrequency == 12.5 && vitesse > 285)
+		covit = 1;
+	else if (mainFrequency == 16.9 && vitesse > 315)
+		covit = 1;
+	else if (mainFrequency == 14.7 && vitesse > 285)
+		covit = 1;
+	else if (mainFrequency == 15.8 && vitesse > 235)
+		covit = 1;
+	else if (mainFrequency == 18 && vitesse > 235)
+		covit = 1;
+	else if (mainFrequency == 19.1 && vitesse > 170)
+		covit = 1;
+	else if (mainFrequency == 20.2 && vitesse > 170)
+		covit = 1;
+	else if (mainFrequency == 22.4 && vitesse > 90)
+		covit = 1;
+	else if (mainFrequency == 24.6 && vitesse > 90)
+		covit = 1;
+	else if (mainFrequency == 29 && vitesse > 35)
+		covit = 1;
+	else
+		covit = 0;
 
 	secondaryFrequency = 1318;
 	//cout << indication << endl;
@@ -130,4 +162,7 @@ bool TVM_Bord::getSect() {
 }
 bool TVM_Bord::getBp() {
 	return bp;
+}
+bool TVM_Bord::getCovit() {
+	return covit;
 }

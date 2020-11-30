@@ -1,6 +1,6 @@
 #include "Virtual_train.hpp"
 
-Virtual_train::Virtual_train(Software &soft) : reseau(), etcs(soft, train_dynamique, reseau, tvm_bord), train_statique(reseau), train_dynamique(reseau,train_statique), tvm_bord(reseau)
+Virtual_train::Virtual_train(Software &soft) : reseau(), etcs(soft, train_dynamique, reseau, tvm_bord), train_statique(reseau), train_dynamique(reseau,train_statique), tvm_bord(reseau, train_dynamique)
 {
     //cout<< "VT" <<endl;
     this->soft = &soft;

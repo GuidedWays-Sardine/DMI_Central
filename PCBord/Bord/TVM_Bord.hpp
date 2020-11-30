@@ -2,11 +2,12 @@
 #define TV
 #include "../Reseau.hpp"
 #include "../define.hpp"
+#include "../Train_dynamique.hpp"
 
 class TVM_Bord
 {
 	protected:
-		Reseau *Res;
+		
 		double mainFrequency;
 		double secondaryFrequency;
 		double selfTimer;
@@ -27,13 +28,18 @@ class TVM_Bord
 		bool kv65 = 0;
 		bool bp = 0;
 		bool entree = 0;
+		bool covit = 0;
+		double vitesse;
+		Reseau* Res;
+		Train_dynamique* train_dynamique;
 
 	public:
-		TVM_Bord(Reseau &Res);
+		TVM_Bord(Reseau& Res, Train_dynamique &train_dynamique);
 		void update();
 		string getIndication();
 		bool getSect();
 		bool getBp();
+		bool getCovit();
 };
 
 #endif

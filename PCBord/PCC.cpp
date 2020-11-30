@@ -7,7 +7,7 @@ PCC::PCC(Software &softw, Train_dynamique &T_D)
 	echelle = double(soft->getFenPcc()->getSize().x - 2*marge) / distance_max_affichable;
 	std::ifstream ig("C:/Users/nicol/OneDrive/Bureau/ETCS/src/canton.json");
 	ig >> liste_canton;
-
+	
 }
 
 void PCC::update()
