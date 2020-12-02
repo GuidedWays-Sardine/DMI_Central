@@ -3,6 +3,7 @@
 #include "define.hpp"
 #include "ArduSerial.hpp"
 
+
 using namespace std;
 
 Reseau::Reseau()
@@ -188,6 +189,8 @@ void Reseau::SocketSendInit()
 			return;
 		}
 		startUp = iResult;
+
+		memset(&server, 0, sizeof(server));
 
 		server.sin_family = AF_INET;
 		server.sin_port = htons(52001);
