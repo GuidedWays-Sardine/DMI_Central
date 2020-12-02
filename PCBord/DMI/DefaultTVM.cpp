@@ -146,97 +146,101 @@ void DefaultTVM::update()
 
 	// affichage TVM
 
+	sideBord = TVM->getSideBord();
+
 	indication = TVM->getIndication();
-	if (indication.at(3) == 'R') {
-		creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 5);
-		creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 5);
-		creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 5);
-	}
+	if (sideBord != 3) {
+		if (indication.at(3) == 'R' || sideBord == 0) {
+			creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 5);
+			creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 5);
+			creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 5);
+		}
 
-	else if (indication.at(3) == 'V') {
-		creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
-		creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
-		creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
-	}
+		else if (indication.at(3) == 'V') {
+			creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
+			creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
+			creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
+		}
 
-	else if (indication.at(3) == 'C' && clockTVM.getElapsedTime()>periodeClignotement/floatdeux) {
-		creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
-		creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
-		creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
-	}
+		else if (indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
+			creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
+			creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
+			creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 6);
+		}
 
-	else if (indication.at(3) == 'E') {
-		creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
-		creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
-		creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
+		else if (indication.at(3) == 'E') {
+			creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
+			creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
+			creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
+		}
 	}
-
 	else if (indication.at(3) == 'A') {
 		creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
 		creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
 		creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
 	}
 
-	
-	if (indication.at(0) == '3' && indication.at(1) == '0' && indication.at(2) == '0' && indication.at(3) == 'V') {
-		creation_texte("3", WHITE, 48, 6, V2f(54 + 1 * 37+29, 54 + 30 + 191 + 25+25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37+29, 54 + 30 + 191 + 25+25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37+29, 54 + 30 + 191 + 25+25), 1);
-	}
-	else if (indication.at(0) == '3' && indication.at(1) == '0' && indication.at(2) == '0' && indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
-		creation_texte("3", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'V') {
-		creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("7", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
-		creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("7", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'A') {
-		creation_texte("2", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("7", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '2' && indication.at(1) == '2' && indication.at(2) == '0' && indication.at(3) == 'E') {
-		creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("2", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '2' && indication.at(1) == '2' && indication.at(2) == '0' && indication.at(3) == 'A') {
-		creation_texte("2", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("2", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '1' && indication.at(1) == '6' && indication.at(2) == '0' && indication.at(3) == 'E') {
-		creation_texte("1", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("6", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '1' && indication.at(1) == '6' && indication.at(2) == '0' && indication.at(3) == 'A') {
-		creation_texte("1", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("6", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '0' && indication.at(1) == '8' && indication.at(2) == '0' && indication.at(3) == 'E') {
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("8", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '0' && indication.at(1) == '8' && indication.at(2) == '0' && indication.at(3) == 'A') {
-		creation_texte("0", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("8", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-	}
-	else if (indication.at(0) == '0' && indication.at(1) == '0' && indication.at(2) == '0') {
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-		creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+	if (sideBord != 0 && sideBord != 3) {
+		if (indication.at(0) == '3' && indication.at(1) == '0' && indication.at(2) == '0' && indication.at(3) == 'V') {
+			creation_texte("3", WHITE, 48, 6, V2f(54 + 1 * 37+29, 54 + 30 + 191 + 25+25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37+29, 54 + 30 + 191 + 25+25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37+29, 54 + 30 + 191 + 25+25), 1);
+		}
+		else if (indication.at(0) == '3' && indication.at(1) == '0' && indication.at(2) == '0' && indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
+			creation_texte("3", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'V') {
+			creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("7", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
+			creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("7", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'A') {
+			creation_texte("2", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("7", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '2' && indication.at(1) == '2' && indication.at(2) == '0' && indication.at(3) == 'E') {
+			creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("2", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '2' && indication.at(1) == '2' && indication.at(2) == '0' && indication.at(3) == 'A') {
+			creation_texte("2", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("2", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '1' && indication.at(1) == '6' && indication.at(2) == '0' && indication.at(3) == 'E') {
+			creation_texte("1", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("6", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '1' && indication.at(1) == '6' && indication.at(2) == '0' && indication.at(3) == 'A') {
+			creation_texte("1", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("6", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '0' && indication.at(1) == '8' && indication.at(2) == '0' && indication.at(3) == 'E') {
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("8", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '0' && indication.at(1) == '8' && indication.at(2) == '0' && indication.at(3) == 'A') {
+			creation_texte("0", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("8", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
+		else if (indication.at(0) == '0' && indication.at(1) == '0' && indication.at(2) == '0') {
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+			creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+		}
 	}
 
 	if (clockTVM.getElapsedTime() > periodeClignotement)

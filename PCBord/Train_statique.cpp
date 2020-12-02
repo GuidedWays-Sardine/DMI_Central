@@ -118,6 +118,19 @@ void Train_statique::set_sifflet()
 	if (res->getPupitre_entrant().commande_sifflet_pin1 == 1 && res->getPupitre_entrant().commande_sifflet_pin2 == 1)
 	etat_sifflet = -1;
 }
+
+//get set TVM à compléter avant avec l'algo des trois interrupteurs TVM
+// 0 : pas de TVM
+//1 : parité impaire
+//2 : parité paire
+
+int Train_statique::getSideSwitch() {
+	return sideSwitch;
+}
+void Train_statique::setSideSwitch(int SS) 
+{
+	sideSwitch = SS;
+}
 //void TrainStatique::set_LS_SF()
 //{
 //  // C'est la lumière qui est modifiée par l'acquittement

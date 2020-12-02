@@ -3,6 +3,7 @@
 #include "../Reseau.hpp"
 #include "../define.hpp"
 #include "../Train_dynamique.hpp"
+#include "../Train_statique.hpp"
 
 class TVM_Bord
 {
@@ -29,17 +30,21 @@ class TVM_Bord
 		bool bp = 0;
 		bool entree = 0;
 		bool covit = 0;
+		int sideSwitch = 0;
+		int sideBord = 0;
 		double vitesse;
 		Reseau* Res;
+		Train_statique* train_statique;
 		Train_dynamique* train_dynamique;
 
 	public:
-		TVM_Bord(Reseau& Res, Train_dynamique &train_dynamique);
+		TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique, Train_statique &train_statique);
 		void update();
 		string getIndication();
 		bool getSect();
 		bool getBp();
 		bool getCovit();
+		int getSideBord();
 };
 
 #endif

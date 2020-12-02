@@ -20,7 +20,7 @@ class Traction_Braking_system : public Tools //Ici sont calculées les décélé
 		//std::vector<int> calculsegment; // détermine les segments dans lesqeulles la décélération sera équivalente
 		TrackRelatedInputs *TrackRI;
 		TrainRelatedInputs *TrainRI;
-
+		
 	public :
 		Traction_Braking_system(TrainRelatedInputs &TrainRI, TrackRelatedInputs &TrackRI);
 		void calculA_brake_safe();
@@ -132,6 +132,7 @@ class SpeedAndDistanceMonitoringCommands : public Son
 	public :
 		SpeedAndDistanceMonitoringCommands(Train_dynamique &T_D, MostRestrictiveSpeedLimit &MRSP, SupervisionLimits &SL, TrackRelatedInputs &TrackRI, Software &soft);
 		void SpeedAndDistanceMonitoringCommands_update();
+		void SpeedAndDistanceMonitoringCommands_updateSR();
 		std::string getSupervision_status();
 		std::string getCommand_triggered();
 };

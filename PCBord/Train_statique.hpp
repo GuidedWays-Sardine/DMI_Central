@@ -49,6 +49,7 @@ class Train_statique
         bool etat_TVM_V1;
         bool etat_TVM_V2;
         bool etat_alarme;
+        int sideSwitch = 1;
 
     public :
         Train_statique(Reseau &res);
@@ -82,6 +83,11 @@ class Train_statique
 //      bool getDisj();
 //      int getSifflet();
 //      void update();
+
+        //get set armement parité TVM
+
+        int getSideSwitch();
+        void setSideSwitch(int SS);
 };
 
 #endif

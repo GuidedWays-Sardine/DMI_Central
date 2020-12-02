@@ -1,9 +1,10 @@
 #include "TVM_Bord.hpp"
 
-TVM_Bord::TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique)
+TVM_Bord::TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique, Train_statique& train_statique)
 {
 	this->Res = &Res;
 	this->train_dynamique = &train_dynamique;
+	this->train_statique = &train_statique;
 }
 
 void TVM_Bord::update() {
@@ -12,7 +13,7 @@ void TVM_Bord::update() {
 	selfTimer = Res->getSelfTimer();
 	side = Res->getSideFrequency();
 
-	mainFrequency = 29;
+	mainFrequency = 11.4;
 
 	if (mainFrequency == 11.4)
 		indication = "300V";
@@ -71,7 +72,7 @@ void TVM_Bord::update() {
 		covit = 1;
 	else
 		covit = 0;
-
+	side = 2000;
 	secondaryFrequency = 1318;
 	//cout << indication << endl;
 	if (side == 1700 || side == 2300)
@@ -150,7 +151,41 @@ void TVM_Bord::update() {
 		entree = 1;
 	else if (secondaryFrequency == 3841)
 		entree = 0;
+
+	armv2 = 1;
+	sideSwitch = train_statique->getSideSwitch();
+	if (armv1==1) {
+		sideBord = 1;
+		train_statique->setSideSwitch(sideBord);
+	}
+	else if (armv2 == 1) {
+		sideBord = 2;
+		train_statique->setSideSwitch(sideBord);
+	}
+	else if (armv1 == 0 && armv2==0 && sideSwitch == 1 && side == 1) {
+		sideBord = 1;
+	}
+	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 1 && side == 2) {
+		sideBord = 0;
+	}
+	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 2 && side == 1) {
+		sideBord = 0;
+	}
+	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 2 && side == 2) {
+		sideBord = 2;
+	}
+	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 0 && side == 1) {
+		sideBord = 3;
+	}
+	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 0 && side == 2) {
+		sideBord = 3;
+	}
+	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 0 && side == 0) {
+		sideBord = 3;
+	}
 }
+
+
 
 //get indication pour ecran
 
@@ -165,4 +200,7 @@ bool TVM_Bord::getBp() {
 }
 bool TVM_Bord::getCovit() {
 	return covit;
+}
+int TVM_Bord::getSideBord() {
+	return sideBord;
 }

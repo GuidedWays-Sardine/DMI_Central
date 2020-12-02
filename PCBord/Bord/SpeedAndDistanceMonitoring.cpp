@@ -31,7 +31,7 @@ void SpeedAndDistanceMonitoring::SDM_Update_FS()
 
 void SpeedAndDistanceMonitoring::SDM_Update_SR()
 {
-
+	SADMC.SpeedAndDistanceMonitoringCommands_updateSR();
 }
 
 Traction_Braking_system::Traction_Braking_system(TrainRelatedInputs &TrainRI, TrackRelatedInputs &TrackRI)
@@ -571,6 +571,12 @@ void SpeedAndDistanceMonitoringCommands::SpeedAndDistanceMonitoringCommands_upda
 	}
 	//cout << supervision_status << " ";
 	//cout << T_D->getV_train() << " " << SL->getV_indication()<< " " << SL->getV_permitted()<< " " << SL->getV_warning() << " " << SL->getV_ebi();
+}
+
+void SpeedAndDistanceMonitoringCommands::SpeedAndDistanceMonitoringCommands_updateSR()
+{
+	command_triggered = "";
+	stopfunction();
 }
 
 string SpeedAndDistanceMonitoringCommands::getSupervision_status(){return supervision_status;}

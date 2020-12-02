@@ -105,7 +105,7 @@ class TracksideSpeedRestriction : public Tools
 		bool getSpeed_change();
 		void setSpeed_change(bool S);
 
-	//void actualisation_vitesse();//Si une vitesse vient se rajouter
+	//void *();//Si une vitesse vient se rajouter
 
 };
 

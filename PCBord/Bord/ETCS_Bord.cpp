@@ -39,6 +39,10 @@ void ETCS_Bord::bord_update()
 	else if (generalMode == "TVM") {
 		TVM->update();
 	}
+	if (generalMode == "SR")
+	{
+		SDM.SDM_Update_SR();
+	}
 	/*else // Lancer les fonctions de sécurité basiques
 	{
 		//BasicEVCcommands.respect_vitesse(generalMode);

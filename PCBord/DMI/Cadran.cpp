@@ -168,18 +168,18 @@ void Cadran::update()
 	}
 	if (bord->getGeneralMode() != "TVM" && bord->getGeneralMode() != "SB")
 	{
-		for(int i = 0; i<= V2; i++)
+		/*for(int i = 0; i<= V2; i++)
 		{
 			Barre = Shape(graduations[i], V2f(137, -(float)deltateta / 2.0f), V2f(137, (float)deltateta / 2.0f), V2f(128, (float)deltateta / 2.0f), V2f(128, -(float)deltateta / 2.0f));
 			couleurForme(Barre, WHITE, 4);
 			soft->getFenetre()->draw(Barre);
-		}
+		}*/
 		for(int i = static_cast<int>((V2 - 2 * asin(3 / (137 - 20)))); i <= V2; i++)
 		{
 			Barre = Shape(graduations[i], V2f(128, -(float)deltateta / 2.0f), V2f(128, (float)deltateta / 2.0f), V2f(128 - 11, (float)deltateta / 2.0f), V2f(128 - 11, -(float)deltateta / 2.0f));
 			if(Vyellow > VdarkGrey && Vyellow > Vwhite)
 				couleurForme(Barre, YELLOW, 4);
-			else if(Vwhite > VdarkGrey && Vwhite > Vyellow)
+			else if(Vwhite < VdarkGrey && Vwhite > Vyellow)
 				couleurForme(Barre, WHITE, 4);
 			else
 				couleurForme(Barre, DARK_GREY, 4);
@@ -202,6 +202,14 @@ void Cadran::update()
 			Barre = Shape(graduations[i], V2f(137, -(float)deltateta / 2.0f), V2f(137, (float)deltateta / 2.0f), V2f(128, (float)deltateta / 2.0f), V2f(128, -(float)deltateta / 2.0f));
 			couleurForme(Barre, DARK_GREY, 4);
 			soft->getFenetre()->draw(Barre);
+		}
+		if (Vwhite != VdarkGrey) {
+			for (int i = static_cast<int>(Vwhite); i <= VdarkGrey; i++)
+			{
+				Barre = Shape(graduations[i], V2f(137, -(float)deltateta / 2.0f), V2f(137, (float)deltateta / 2.0f), V2f(128, (float)deltateta / 2.0f), V2f(128, -(float)deltateta / 2.0f));
+				couleurForme(Barre, WHITE, 4);
+				soft->getFenetre()->draw(Barre);
+			}
 		}
 		for(int i = 1; i <= VmediumGrey; i++)
 		{
@@ -309,7 +317,7 @@ void Cadran::convertisseurVitesses()
 			else if(bord->SDM.SADMC.getSupervision_status() == "Normal")
 			{
 				aiguilleColor = GREY;
-				actualisationVitesse(0, 0, 0, 0, 0, bord->SDM.MRSP.getV_MRSP());
+				actualisationVitesse(0, 0, 0, bord->SDM.MRSP.getV_MRSP(), 0, bord->SDM.MRSP.getV_MRSP());
 			}
 		}
 
@@ -368,30 +376,30 @@ void Cadran::convertisseurVitesses()
 				//{
 					aiguilleColor = RED;
 					//actualisationVitesse(bord->SDM.SL.getV_ebi(), 0, bord->SDM.MRSP.getV_MRSP(), 0, 0, 0);
-					actualisationVitesse(T_D->getV_train(), 0, bord->SDM.SL.getV_permitted(), 0, 0, bord->TrackRI.SADL.getSpeedTarget());
+					actualisationVitesse(T_D->getV_train(), 0, bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(), 0, bord->TrackRI.SADL.getSpeedTarget());
 				//}
 
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Warning")
 			{
 				aiguilleColor = ORANGE;
-				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(), 0, 0, bord->TrackRI.SADL.getSpeedTarget());
+				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(), 0, bord->TrackRI.SADL.getSpeedTarget());
 
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Overspeed")
 			{
 				aiguilleColor = ORANGE;
-				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(), 0, 0, bord->TrackRI.SADL.getSpeedTarget());
+				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(), 0, bord->TrackRI.SADL.getSpeedTarget());
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Indication")
 			{
 				aiguilleColor = YELLOW;
-				actualisationVitesse(0,0,bord->SDM.SL.getV_permitted(),0,0, bord->TrackRI.SADL.getSpeedTarget());
+				actualisationVitesse(0,0,bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(),0, bord->TrackRI.SADL.getSpeedTarget());
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Normal")
 			{
 				aiguilleColor = GREY;
-				actualisationVitesse(0, 0, 0, 0, 0, bord->SDM.SL.getV_permitted());
+				actualisationVitesse(0, 0, 0, bord->TrackRI.SADL.getSpeedTarget(), 0, bord->SDM.SL.getV_permitted());
 			}
 		}
 		else if(bord->SDM.SL.getStatus() == "RSM")
@@ -399,6 +407,10 @@ void Cadran::convertisseurVitesses()
 			aiguilleColor = YELLOW;
 			actualisationVitesse(0, 0, bord->SDM.SL.getV_permitted(), 0, 0, 0);
 		}
+	}
+	else if (bord->getGeneralMode() == "SR") {
+		actualisationVitesse(0, 0, 0, 0, 0, 0);
+		aiguilleColor = GREY;
 	}
 	//else if(bord->getGeneralMode() == "LS")
 	//{

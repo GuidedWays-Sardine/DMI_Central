@@ -23,7 +23,7 @@ class DefaultTVM : public Fenetre
 		bool sect = 0;
 		bool bp = 0;
 		bool covit = 0;
-		
+		int sideBord=0;
 
 		Time periodeClignotement = seconds(0.65f);
 		float floatdeux = 2;
