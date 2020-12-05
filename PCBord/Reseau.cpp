@@ -189,7 +189,7 @@ void Reseau::SocketSendInit()
 			return;
 		}
 		startUp = iResult;
-
+		closesocket(ConnectSocket);
 		memset(&server, 0, sizeof(server));
 
 		server.sin_family = AF_INET;
@@ -205,6 +205,7 @@ void Reseau::SocketSendInit()
 			printf("socket failed with error: %ld\n", WSAGetLastError());
 			startUp = 0;
 			validationSocket = 0;
+			closesocket(ConnectSocket);
 			WSACleanup();
 			return;
 		}
@@ -441,9 +442,6 @@ void Reseau::setMainFrequency(double MF){mainFrequency = MF;}
 
 double Reseau::getSecondFrequency(){return secondFrequency;}
 void Reseau::setSecondFrequency(double SF){secondFrequency = SF;}
-
-double Reseau::getSelfTimer(){return selfTimer;}
-void Reseau::setSelfTimer(double ST){selfTimer = ST;}
 
 int Reseau::getSideFrequency() { return sideFrequency; }
 void Reseau::setSideFrequency(int SIF) { sideFrequency = SIF; }

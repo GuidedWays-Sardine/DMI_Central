@@ -1,5 +1,5 @@
 #include "define.hpp"
-
+#pragma once
 class Son
 {
 	private :

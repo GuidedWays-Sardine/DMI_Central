@@ -1,6 +1,8 @@
 #ifndef CCC
 #define CCC
 
+#pragma once 
+
 #include "../define.hpp"
 #include "../Tools.hpp"
 #include "../Sound.hpp"
@@ -127,7 +129,7 @@ class SpeedAndDistanceMonitoringCommands : public Son
 		SupervisionLimits *SL;
 		Software *soft;
 		std::string supervision_status = "Normal";// au démarrage il est en condition normal
-		std::string command_triggered;
+		
 
 	public :
 		SpeedAndDistanceMonitoringCommands(Train_dynamique &T_D, MostRestrictiveSpeedLimit &MRSP, SupervisionLimits &SL, TrackRelatedInputs &TrackRI, Software &soft);
@@ -135,6 +137,8 @@ class SpeedAndDistanceMonitoringCommands : public Son
 		void SpeedAndDistanceMonitoringCommands_updateSR();
 		std::string getSupervision_status();
 		std::string getCommand_triggered();
+		void setCommand_triggered(string command);
+		std::string command_triggered;
 };
 
 class SpeedAndDistanceMonitoring

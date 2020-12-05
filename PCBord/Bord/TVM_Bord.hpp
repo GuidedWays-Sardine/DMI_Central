@@ -1,26 +1,27 @@
 #ifndef TV
 #define TV
+#pragma once
 #include "../Reseau.hpp"
 #include "../define.hpp"
 #include "../Train_dynamique.hpp"
 #include "../Train_statique.hpp"
+#include "../Sound.hpp"
 
-class TVM_Bord
+class TVM_Bord : public Son
 {
 	protected:
 		
+		string indicationTemp = "";
 		double mainFrequency;
 		double secondaryFrequency;
-		double selfTimer;
 		double punctualEmitterFrequency;
-		string indication;
+		string indication = "";
 		int side;
 		bool sect = 0;
 		bool sortieTunnel = 0;
 		bool commutation = 0;
 		bool carre = 0;
-		bool armdv2 = 0;
-		bool armdv1 = 0;
+		double lastSecondaryFrequency = 0;
 		bool desv2 = 0;
 		bool desv1 = 0;
 		bool testAD = 0;
@@ -36,6 +37,7 @@ class TVM_Bord
 		Reseau* Res;
 		Train_statique* train_statique;
 		Train_dynamique* train_dynamique;
+		bool fu;
 
 	public:
 		TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique, Train_statique &train_statique);
@@ -45,6 +47,7 @@ class TVM_Bord
 		bool getBp();
 		bool getCovit();
 		int getSideBord();
+		bool getFU();
 };
 
 #endif

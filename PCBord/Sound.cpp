@@ -7,6 +7,8 @@ Son::Son()
 
 void Son::playfunction(int choice)
 {
+	if (choice == 5)
+		music.openFromFile("ressources/sounds/TVM.wav");
 	if(choice == 4)
 		music.openFromFile("ressources/sounds/S2_warning.wav");
 	if(choice == 3)
@@ -21,7 +23,10 @@ void Son::playfunction(int choice)
 		if(choice == 3 || choice == 4)
 			music.setLoop(true);
 	}
-	music.setVolume(50);
+	if (choice == 5)
+    	music.setVolume(100);
+	else 
+		music.setVolume(50);
 }
 
 void Son::stopfunction()

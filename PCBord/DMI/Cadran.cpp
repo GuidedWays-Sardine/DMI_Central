@@ -203,14 +203,14 @@ void Cadran::update()
 			couleurForme(Barre, DARK_GREY, 4);
 			soft->getFenetre()->draw(Barre);
 		}
-		if (Vwhite != VdarkGrey) {
+	/*	if (Vwhite != VdarkGrey) { 3.4.0
 			for (int i = static_cast<int>(Vwhite); i <= VdarkGrey; i++)
 			{
 				Barre = Shape(graduations[i], V2f(137, -(float)deltateta / 2.0f), V2f(137, (float)deltateta / 2.0f), V2f(128, (float)deltateta / 2.0f), V2f(128, -(float)deltateta / 2.0f));
 				couleurForme(Barre, WHITE, 4);
 				soft->getFenetre()->draw(Barre);
 			}
-		}
+		}*/
 		for(int i = 1; i <= VmediumGrey; i++)
 		{
 			Barre = Shape(graduations[i], V2f(137, -(float)deltateta / 2.0f), V2f(137, (float)deltateta / 2.0f), V2f(128 + 4, (float)deltateta / 2.0f), V2f(128 + 4, -(float)deltateta / 2.0f));
@@ -376,30 +376,30 @@ void Cadran::convertisseurVitesses()
 				//{
 					aiguilleColor = RED;
 					//actualisationVitesse(bord->SDM.SL.getV_ebi(), 0, bord->SDM.MRSP.getV_MRSP(), 0, 0, 0);
-					actualisationVitesse(T_D->getV_train(), 0, bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(), 0, bord->TrackRI.SADL.getSpeedTarget());
+					actualisationVitesse(T_D->getV_train(), 0, bord->SDM.SL.getV_permitted(),0, 0, bord->TrackRI.SADL.getSpeedTarget());
 				//}
 
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Warning")
 			{
 				aiguilleColor = ORANGE;
-				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(), 0, bord->TrackRI.SADL.getSpeedTarget());
+				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(),0, 0, bord->TrackRI.SADL.getSpeedTarget());
 
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Overspeed")
 			{
 				aiguilleColor = ORANGE;
-				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(), 0, bord->TrackRI.SADL.getSpeedTarget());
+				actualisationVitesse(0, bord->SDM.SL.getV_ebi(), bord->SDM.SL.getV_permitted(),0, 0, bord->TrackRI.SADL.getSpeedTarget());
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Indication")
 			{
 				aiguilleColor = YELLOW;
-				actualisationVitesse(0,0,bord->SDM.SL.getV_permitted(), bord->TrackRI.SADL.getSpeedTarget(),0, bord->TrackRI.SADL.getSpeedTarget());
+				actualisationVitesse(0,0,bord->SDM.SL.getV_permitted(), 0,0, bord->TrackRI.SADL.getSpeedTarget());
 			}
 			else if(bord->SDM.SADMC.getSupervision_status() == "Normal")
 			{
 				aiguilleColor = GREY;
-				actualisationVitesse(0, 0, 0, bord->TrackRI.SADL.getSpeedTarget(), 0, bord->SDM.SL.getV_permitted());
+				actualisationVitesse(0, 0, 0, 0, 0, bord->SDM.SL.getV_permitted());
 			}
 		}
 		else if(bord->SDM.SL.getStatus() == "RSM")

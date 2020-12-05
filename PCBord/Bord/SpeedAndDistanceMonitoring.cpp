@@ -570,7 +570,7 @@ void SpeedAndDistanceMonitoringCommands::SpeedAndDistanceMonitoringCommands_upda
 		}
 	}
 	//cout << supervision_status << " ";
-	//cout << T_D->getV_train() << " " << SL->getV_indication()<< " " << SL->getV_permitted()<< " " << SL->getV_warning() << " " << SL->getV_ebi();
+	//cout << T_D->getV_train() << " " << SL->getV_indication()<< " " << SL->get$<< " " << SL->getV_warning() << " " << SL->getV_ebi();
 }
 
 void SpeedAndDistanceMonitoringCommands::SpeedAndDistanceMonitoringCommands_updateSR()
@@ -581,3 +581,4 @@ void SpeedAndDistanceMonitoringCommands::SpeedAndDistanceMonitoringCommands_upda
 
 string SpeedAndDistanceMonitoringCommands::getSupervision_status(){return supervision_status;}
 string SpeedAndDistanceMonitoringCommands::getCommand_triggered(){return command_triggered;}
+void SpeedAndDistanceMonitoringCommands::setCommand_triggered(string command) { command_triggered = command; }

@@ -94,7 +94,6 @@ private:
     // variables TVM
     double mainFrequency;
     double secondFrequency;
-    double selfTimer;
 	int sideFrequency;
 
 	int loop = 0;
@@ -123,11 +122,6 @@ public:
 
     double getSecondFrequency();
     void setSecondFrequency(double SF);
-
-    double getSelfTimer();
-    void setSelfTimer(double ST);
-
-
 
 	int getSideFrequency();
 	void setSideFrequency(int SIF);

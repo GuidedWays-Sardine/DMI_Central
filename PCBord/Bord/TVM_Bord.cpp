@@ -1,6 +1,6 @@
 #include "TVM_Bord.hpp"
 
-TVM_Bord::TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique, Train_statique& train_statique)
+TVM_Bord::TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique, Train_statique &train_statique)
 {
 	this->Res = &Res;
 	this->train_dynamique = &train_dynamique;
@@ -10,10 +10,11 @@ TVM_Bord::TVM_Bord(Reseau &Res, Train_dynamique &train_dynamique, Train_statique
 void TVM_Bord::update() {
 	mainFrequency = Res->getMainFrequency();
 	secondaryFrequency = Res->getSecondFrequency();
-	selfTimer = Res->getSelfTimer();
 	side = Res->getSideFrequency();
 
-	mainFrequency = 11.4;
+	// sol : doit faire le retardateur avec un simili cdv pour simuler le retardateur
+
+	mainFrequency = 10.3;
 
 	if (mainFrequency == 11.4)
 		indication = "300V";
@@ -36,11 +37,14 @@ void TVM_Bord::update() {
 	else if (mainFrequency == 20.2)
 		indication = "080A";
 	else if (mainFrequency == 22.4)
-		indication = "220E";
+		indication = "080E";
 	else if (mainFrequency == 24.6)
 		indication = "000R";
 	else if (mainFrequency == 29)
 		indication = "RRRR";
+
+	if (indicationTemp != indication && indication != "" && indicationTemp != "")
+		playfunction(5);
 
 	vitesse = train_dynamique->getV_train();
 
@@ -73,7 +77,7 @@ void TVM_Bord::update() {
 	else
 		covit = 0;
 	side = 2000;
-	secondaryFrequency = 1318;
+
 	//cout << indication << endl;
 	if (side == 1700 || side == 2300)
 		side = 1;
@@ -86,71 +90,36 @@ void TVM_Bord::update() {
 		sect = 1;
 	else if (secondaryFrequency == 1319)
 		sect = 0;
-		
-	if (secondaryFrequency == 1459)
-		sortieTunnel = 1;
-	else if (secondaryFrequency == 1460)
-		sortieTunnel = 0;
 
-	if (secondaryFrequency == 1600)
+	if (lastSecondaryFrequency != 1600 && secondaryFrequency == 1600)
 		commutation = 1;
-	else if (secondaryFrequency == 1601)
-		commutation = 0;
 
-	if (secondaryFrequency == 1882)
+	if (lastSecondaryFrequency != 1882 && secondaryFrequency == 1882)
 		carre = 1;
-	else if (secondaryFrequency == 1883)
-		carre = 0;
 
-	if (secondaryFrequency == 2163)
-		armdv2 = 1;
-	else if (secondaryFrequency == 2164)
-		armdv2 = 0;
-
-	if (secondaryFrequency == 2726)
-		armdv1 = 1;
-	else if (secondaryFrequency == 2727)
-		armdv1 = 0;
-
-	if (secondaryFrequency == 2867)
-		desv2 = 1;
-	else if (secondaryFrequency == 2868)
-		desv2 = 0;
-
-	if (secondaryFrequency == 3008)
-		desv1 = 1;
-	else if (secondaryFrequency == 3009)
-		desv1 = 0;
-
-	if (secondaryFrequency == 3148)
-		testAD = 1;
-	else if (secondaryFrequency == 3149)
-		testAD = 0;
-
-	if (secondaryFrequency == 3290)
-		armv2 = 1;
-	else if (secondaryFrequency == 3291)
+	if (lastSecondaryFrequency != 2867 && secondaryFrequency == 2867)
 		armv2 = 0;
 
-	if (secondaryFrequency == 3430)
-		armv1 = 1;
-	else if (secondaryFrequency == 3431)
-		armv1 = 0;
+	if (lastSecondaryFrequency != 3008 && secondaryFrequency == 3008)
+		armv2 = 0;
 
-	if (secondaryFrequency == 3571)
+	if ((lastSecondaryFrequency != 3290 && secondaryFrequency == 3290) || (lastSecondaryFrequency != 2163 && secondaryFrequency == 2163)) {
+		armv2 = 1;
+		armv1 = 0;
+	}
+    else if ((lastSecondaryFrequency != 3430 && secondaryFrequency == 3430) || (lastSecondaryFrequency != 2726 && secondaryFrequency == 2726)) {
+		armv1 = 1;
+		armv2 = 0;
+	}
+	
+
+    if (lastSecondaryFrequency != 3571 && secondaryFrequency == 3571)  
 		kv65 = 1;
-	else if (secondaryFrequency == 3572)
-		kv65 = 0;
 
 	if (secondaryFrequency == 3725)
 		bp = 1;
 	else if (secondaryFrequency == 3726)
 		bp = 0;
-
-	if (secondaryFrequency == 3840)
-		entree = 1;
-	else if (secondaryFrequency == 3841)
-		entree = 0;
 
 	armv2 = 1;
 	sideSwitch = train_statique->getSideSwitch();
@@ -183,6 +152,23 @@ void TVM_Bord::update() {
 	else if (armv1 == 0 && armv2 == 0 && sideSwitch == 0 && side == 0) {
 		sideBord = 3;
 	}
+
+	// if (commutation ==1 && rpi->getCanal()==1)
+	//     rpi->setCanal(2);
+	// if (commutation ==1 && rpi->getCanal()==2)
+	//     rpi->setCanal(1);
+
+	if ((covit == 1) || (kv65 == 1 && mainFrequency == 24.6) || (carre == 1 && mainFrequency == 29))
+		fu = 1;
+	else if ((covit == 0) && ((kv65 == 0) || (kv65 == 1 && mainFrequency != 24.6)) && ((carre == 0) || (carre == 1 && mainFrequency != 29)))
+		fu = 0;
+
+	indicationTemp = indication;
+	lastSecondaryFrequency = secondaryFrequency;
+	commutation = 0;
+	carre = 0;
+	kv65 = 0;
+
 }
 
 
@@ -203,4 +189,7 @@ bool TVM_Bord::getCovit() {
 }
 int TVM_Bord::getSideBord() {
 	return sideBord;
+}
+bool TVM_Bord::getFU() {
+	return fu;
 }

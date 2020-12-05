@@ -38,6 +38,10 @@ void ETCS_Bord::bord_update()
 	}
 	else if (generalMode == "TVM") {
 		TVM->update();
+		if (TVM->getFU() == 1)
+			SDM.SADMC.setCommand_triggered("EB");
+		else if(TVM->getFU() == 0)
+			SDM.SADMC.setCommand_triggered("");
 	}
 	if (generalMode == "SR")
 	{

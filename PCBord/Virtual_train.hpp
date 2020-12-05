@@ -12,7 +12,7 @@ class Virtual_train
 {
 	private :
 
-		int n = 0;;
+		int n = 0;
 
 
     public :

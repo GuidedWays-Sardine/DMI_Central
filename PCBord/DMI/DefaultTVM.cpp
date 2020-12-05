@@ -173,11 +173,11 @@ void DefaultTVM::update()
 			creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
 			creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 7);
 		}
-	}
-	else if (indication.at(3) == 'A') {
-		creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
-		creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
-		creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
+		else if (indication.at(3) == 'A') {
+			creation_rectangle(V2f((54 + 3 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
+			creation_rectangle(V2f((54 + 1 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
+			creation_rectangle(V2f((54 + 5 * 37), (54 + 30 + 191 + 25)), V2f(58, 50), 8);
+		}
 	}
 
 	if (sideBord != 0 && sideBord != 3) {
@@ -252,9 +252,5 @@ void DefaultTVM::update()
 	bp = TVM->getBp();
 	if (bp == 1)
 		BP.afficher(V2f(54 + 140 - 36, 274));			//F5
-
-	covit = TVM->getCovit();
-	if (covit ==1 )
-		ST_01.afficher(V2f(54 / 2, 54 + 30 + 191 + 25 + 25 + 12.5));
 
 }
