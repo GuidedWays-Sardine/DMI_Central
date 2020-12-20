@@ -167,7 +167,6 @@
     <ClInclude Include="Balise.hpp" />
     <ClInclude Include="Bord\BasicEVCSecurity.hpp" />
     <ClInclude Include="Bord\ETCS_Bord.hpp" />
-    <ClInclude Include="Bord\TVM_Bord.hpp" />
     <ClInclude Include="Bord\SpeedAndDistanceMonitoring.hpp" />
     <ClInclude Include="Bord\TrackRelatedInputs.hpp" />
     <ClInclude Include="Bord\TrainRelatedInputs.hpp" />
@@ -177,7 +176,6 @@
     <ClInclude Include="DMI\DataEntry.hpp" />
     <ClInclude Include="DMI\Dataview.hpp" />
     <ClInclude Include="DMI\Default.hpp" />
-    <ClInclude Include="DMI\DefaultTVM.hpp" />
     <ClInclude Include="DMI\DriverID.hpp" />
     <ClInclude Include="DMI\ERTMS_ETCSlevel.hpp" />
     <ClInclude Include="DMI\ETCS_DMI.hpp" />
@@ -212,7 +210,6 @@
     <ClCompile Include="Balise.cpp" />
     <ClCompile Include="Bord\BasicEVCSecurity.cpp" />
     <ClCompile Include="Bord\ETCS_Bord.cpp" />
-    <ClCompile Include="Bord\TVM_Bord.cpp" />
     <ClCompile Include="Bord\SpeedAndDistanceMonitoring.cpp" />
     <ClCompile Include="Bord\TrackRelatedInputs.cpp" />
     <ClCompile Include="Bord\TrainRelatedInputs.cpp" />
@@ -221,7 +218,6 @@
     <ClCompile Include="DMI\DataEntry.cpp" />
     <ClCompile Include="DMI\Dataview.cpp" />
     <ClCompile Include="DMI\Default.cpp" />
-    <ClCompile Include="DMI\DefaultTVM.cpp" />
     <ClCompile Include="DMI\DriverID.cpp" />
     <ClCompile Include="DMI\ERTMS_ETCSlevel.cpp" />
     <ClCompile Include="DMI\ETCS_DMI.cpp" />

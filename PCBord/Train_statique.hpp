@@ -1,8 +1,8 @@
 #ifndef beno
 #define beno
 
+
 #include "define.hpp"
-#include "Reseau.hpp"
 
 struct Chrono
 
@@ -20,39 +20,38 @@ struct Chrono
 class Train_statique
 {
     private :
-        Reseau *res;
-        int etat_projecteurs;
-        int etat_disj;
-        bool etat_sablage;
+        int etat_projecteurs = 0;
+        int etat_disj = 0;
+        bool etat_sablage = 0;
         struct Chrono chrono_sablage;
-        bool etat_acquitt;
-        int etat_essui_glace;
-        bool etat_lave_glace;
-        int etat_light_cabine;
-        int etat_light_pupitre;
-        int etat_sifflet;
-        bool etat_LS_SF;
-        bool etat_BP_SF;
-        int signalisation;
-        double etat_VI;
-        int direction;
-        int etat_conduct_mod;
-        double etat_tract_frein;
-        int etat_porte;
-        bool etat_panto;
+        bool etat_acquitt = 0;
+        int etat_essui_glace = 0;
+        bool etat_lave_glace = 0;
+        int etat_light_cabine = 0;
+        int etat_light_pupitre = 0;
+        int etat_sifflet = 0;
+        bool etat_LS_SF = 0;
+        bool etat_BP_SF = 0;
+        int signalisation = 0;
+        double etat_VI = 0;
+        int direction = 0;
+        int etat_conduct_mod = 0;
+        double etat_tract_frein = 0;
+        int etat_porte = 0;
+        bool etat_panto = 0;
         struct Chrono chrono_panto;
-        bool etat_VA;
-        bool etat_cle_BL;
-        bool etat_ventilation;
-        int etat_GROG;
+        bool etat_VA = 0;
+        bool etat_cle_BL = 0;
+        bool etat_ventilation = 0;
+        int etat_GROG = 0;
         struct Chrono chrono_GROG;
-        bool etat_TVM_V1;
-        bool etat_TVM_V2;
-        bool etat_alarme;
+        bool etat_TVM_V1 = 0;
+        bool etat_TVM_V2 = 0;
+        bool etat_alarme = 0;
         int sideSwitch = 1;
 
     public :
-        Train_statique(Reseau &res);
+        Train_statique();
         void update();
         void set_projecteurs();
         void set_disj();

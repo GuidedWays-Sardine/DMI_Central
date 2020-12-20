@@ -4,15 +4,15 @@
 #include "TrainRelatedInputs.hpp"
 #include "TrackRelatedInputs.hpp"
 #include "../Train_dynamique.hpp"
+#include "../Train_statique.hpp"
 #include "SpeedAndDistanceMonitoring.hpp"
 #include "../Reseau.hpp"
-#include "TVM_Bord.hpp"
 #include "BasicEVCSecurity.hpp"
 
 class SpeedAndDistanceMonitoring;
 
 
-class ETCS_Bord
+class ETCS_Bord : public Son, public Train_statique
 {
 	protected :
 		std::string generalMode = "SB";// FS,SR,SB
@@ -21,14 +21,48 @@ class ETCS_Bord
 		Train_dynamique *T_D;
 		Software *soft;
 		Reseau *Res;
-		TVM_Bord *TVM;
+		
+		// variables TVM
+
+
+		string indicationTemp = "";
+		double mainFrequency;
+		double secondaryFrequency;
+		double punctualEmitterFrequency;
+		string indication = "";
+		int side;
+		bool sect = 0;
+		bool sortieTunnel = 0;
+		bool commutation = 0;
+		bool carre = 0;
+		double lastSecondaryFrequency = 0;
+		bool desv2 = 0;
+		bool desv1 = 0;
+		bool testAD = 0;
+		bool armv2 = 0;
+		bool armv1 = 0;
+		bool kv65 = 0;
+		bool bp = 0;
+		bool entree = 0;
+		bool covit = 0;
+		int sideSwitch = 0;
+		int sideBord = 0;
+		double vitesse;
+		bool fu;
+
+
+		// clock affichage cli
+		Time periodeClignotement = seconds(0.65f);
+		float floatdeux = 2;
+
+		Clock clockTVM;
 
 	public :
 		TrackRelatedInputs TrackRI;
 		TrainRelatedInputs TrainRI;
 		SpeedAndDistanceMonitoring SDM;
 		BasicEVCSecurity BasicEVCcommands;
-		ETCS_Bord(Train_dynamique &T_D, Software &soft, Reseau &Res, TVM_Bord &TVM);
+		ETCS_Bord(Train_dynamique &T_D, Software &soft, Reseau &Res);
 		void bord_update();
 		void transition_generalMode();
 		void connection_update();
@@ -50,7 +84,14 @@ class ETCS_Bord
 		bool getEOA();
 		void setEOA(bool EOA);
 		bool getmodif_Adhesion();
+		void tvmBord();
 
+		string getIndication();
+		bool getSect();
+		bool getBp();
+		bool getCovit();
+		int getSideBord();
+		bool getFU();
 
 };
 

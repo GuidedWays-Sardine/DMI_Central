@@ -4,7 +4,6 @@
 #include "Symbol.hpp"
 #include "Button.hpp"
 #include "Default.hpp"
-#include "DefaultTVM.hpp"
 #include "../define.hpp"
 #include "Menu.hpp"
 #include "Main2.hpp"
@@ -24,7 +23,6 @@ class ETCS_DMI : public Fenetre
 		Train_dynamique *T_D;
 		sf::Event event;
 		Default def;
-		DefaultTVM defTVM;
 		Main2 main2;
 		Override overide;
 		Special special;
@@ -35,9 +33,9 @@ class ETCS_DMI : public Fenetre
 		//SystemVersion systemVersion;
 		sf::VertexArray fond{Quads,4};
 		void action();
-		TVM_Bord *TVM;
+
 	public :
-		ETCS_DMI(Software &soft, ETCS_Bord &bord, Train_dynamique &T_D, TVM_Bord &TVM);
+		ETCS_DMI(Software &soft, ETCS_Bord &bord, Train_dynamique &T_D);
 		void update();
 		void affichage();
 };

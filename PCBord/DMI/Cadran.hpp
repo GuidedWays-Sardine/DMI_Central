@@ -4,6 +4,8 @@
 #include "../Tools.hpp"
 #include "../define.hpp"
 #include "../Bord/ETCS_Bord.hpp"
+#include "Symbol.hpp"
+
 
 class DonneesAfficheurVitesse
 {
@@ -41,6 +43,7 @@ class DonneesAfficheurVitesse
 class Cadran : public Tools
 {
 	private :
+		std::vector<Symbol>* symbol;
 		double Vred = 0;
 		double Vorange = 0;
 		double Vyellow = 0;
@@ -60,6 +63,8 @@ class Cadran : public Tools
 		float teta_origine;
 		sf::VertexArray Shape(DonneesAfficheurVitesse grad, V2f a, V2f b, V2f c, V2f d);
 		V2f local2globalCoordonates(V2f CoordonneesPolaires);
+
+	
 	public :
 		Cadran(Software &soft, Train_dynamique &T_D, ETCS_Bord &bord);
 		Cadran(Software &soft, Train_dynamique &T_D);

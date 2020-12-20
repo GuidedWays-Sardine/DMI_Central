@@ -1,13 +1,12 @@
 #include "ETCS_DMI.hpp"
 
-ETCS_DMI::ETCS_DMI(Software &soft, ETCS_Bord &bord, Train_dynamique &T_D, TVM_Bord &TVM): def(symbol, button, soft, bord, T_D, etat_ecran), defTVM(symbol, button, soft, bord, T_D, etat_ecran, TVM), main2(symbol, button, soft, bord, T_D, etat_ecran), overide(symbol, button, soft, bord, T_D, etat_ecran), special(symbol, button, soft, bord, T_D, etat_ecran),
+ETCS_DMI::ETCS_DMI(Software &soft, ETCS_Bord &bord, Train_dynamique &T_D): def(symbol, button, soft, bord, T_D, etat_ecran), main2(symbol, button, soft, bord, T_D, etat_ecran), overide(symbol, button, soft, bord, T_D, etat_ecran), special(symbol, button, soft, bord, T_D, etat_ecran),
 STU(symbol, button, soft, bord, T_D, etat_ecran), settings(symbol, button, soft, bord, T_D, etat_ecran)/*, srSpeed(fenetre, data), dataView(fenetre, data), systemVersion(fenetre, data)*/
 {
 	//cout<< "DMI" <<endl;
 	this->soft = &soft;
 	this->bord = &bord;
 	this->T_D = &T_D;
-	this->TVM = &TVM;
 	vector<string> nom{"DR_01", "DR_02", "DR_03", "DR_04", "DR_05", "LE_01", "LE_02", "LE_02a", "LE_03", "LE_04", "LE_05", "LE_06", "LE_07", "LE_08", "LE_08a", "LE_09", "LE_09a", "LE_10", "LE_11", "LE_12",
 	"LE_13", "LE_14", "LE_15", "LS_01", "LX_01", "MO_01", "MO_02", "MO_03", "MO_04", "MO_05", "MO_06", "MO_07", "MO_08", "MO_09", "MO_10", "MO_11", "MO_12", "MO_13", "MO_14", "MO_15", "MO_16", "MO_17",
 	"MO_18", "MO_19", "MO_20", "MO_21", "MO_22", "NA_01", "NA_02", "NA_03", "NA_04", "NA_05", "NA_06", "NA_07", "NA_08", "NA_09", "NA_10", "NA_11", "NA_12", "NA_13", "NA_14", "NA_15", "NA_16", "NA_17",
@@ -42,8 +41,6 @@ void ETCS_DMI::update()
 		{
 			if(etat_ecran == "Default")
 				def.update();
-			else if(etat_ecran == "DefaultTVM")
-				defTVM.update();
 			else if(etat_ecran == "Main")
 				main2.update();
 			else if(etat_ecran == "Override")

@@ -4,6 +4,8 @@
 #include <iostream>
 #include "define.hpp"
 
+class Train_dynamique;
+
 using namespace std;
 struct Eurobalise
 {
@@ -90,6 +92,8 @@ private:
 	int startUp = 0;
 	struct sockaddr_in server;
 	bool validationSocket = 0;
+    double convertSpeed = 0;
+    string speed = "";
 
     // variables TVM
     double mainFrequency;
@@ -99,8 +103,9 @@ private:
 	int loop = 0;
 
 public:
-
-    Reseau();
+   
+    Train_dynamique* T_D;
+    Reseau(Train_dynamique& T_D);
     void SocketSendInit();
     void SocketUpdate();
     void Reseau_update();
@@ -109,7 +114,7 @@ public:
     struct Pupitre_entrant getPupitre_entrant();
     struct Eurobalise getEurobalise();
     struct Dynamique_train getDynamique_train();
-
+    
     // fonctions variable a partager
 
     double getRes_vitesse();

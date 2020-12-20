@@ -2,14 +2,18 @@
 #include <iostream>
 #include "define.hpp"
 #include "ArduSerial.hpp"
+#include "Train_dynamique.hpp"
+
 
 
 using namespace std;
 
-Reseau::Reseau()
+Reseau::Reseau(Train_dynamique& T_D)
 // Constructeur
 //**********************************************************
 {
+
+	this->T_D = &T_D;
     // Initialisation de la structure dynamique train aux paramètres de la duplex
     dynamique_train.A=2.27;
     dynamique_train.B=0.032;
@@ -253,7 +257,11 @@ void Reseau::SocketSendInit()
 		}
 		
 		cout << "c'est gagné" << endl;
-		string sent1 = "?1 0 0 0 0 0 0 0 0 0 0 0 ";
+		convertSpeed = T_D->getV_train();
+		convertSpeed = convertSpeed;
+		speed = to_string(convertSpeed);
+		cout << speed << endl;
+		string sent1 = "?" + speed + " 0 0 0 0 0 0 0 0 0 0 0 ";
 		iResult = send(ConnectSocket, sent1.c_str(), strlen(sent1.c_str()), 0);
 		if (iResult == -1) {
 			closesocket(ConnectSocket);
@@ -283,7 +291,10 @@ void Reseau::SocketUpdate()
 		WSACleanup();
 		return;
 	}
-	string sent1 = "?1 0 0 0 0 0 0 0 0 0 0 0 ";
+	convertSpeed = T_D->getV_train();
+	convertSpeed = convertSpeed;
+	speed = to_string(convertSpeed);
+	string sent1 = "?" + speed + " 0 0 0 0 0 0 0 0 0 0 0 ";
 	iResult = send(ConnectSocket, sent1.c_str(), strlen(sent1.c_str()), 0);
 	if (iResult == SOCKET_ERROR) {
 		printf("send failed with error: %d\n", WSAGetLastError());

@@ -24,10 +24,8 @@ void Fenetre::close()
 {
 	if((*buttons)[11].getactivation()) // ?
         page = 1;
-    if((*buttons)[11].getactivation() && (*ecran == "Main" || *ecran == "Override" || *ecran == "Special" || *ecran == "Settings"|| *ecran == "dataView") && bord->getGeneralMode()!="TVM")
+    if((*buttons)[11].getactivation() && (*ecran == "Main" || *ecran == "Override" || *ecran == "Special" || *ecran == "Settings"|| *ecran == "dataView"))
         *ecran = "Default";
-	else if ((*buttons)[11].getactivation() && (*ecran == "Main" || *ecran == "Override" || *ecran == "Special" || *ecran == "Settings" || *ecran == "dataView") && bord->getGeneralMode() == "TVM")
-		*ecran = "DefaultTVM";
     else if((*buttons)[11].getactivation()&& (*ecran == "languageWindow" || *ecran == "volumeWindow" || *ecran == "brightnessWindow"))
         *ecran = "Settings";
     else if((*buttons)[11].getactivation()&& (*ecran == "DriverID" || *ecran == "trainDataWindow" || *ecran == "trainRunningNumberWindow" || *ecran == "RBCdataWindow" ||

@@ -24,7 +24,6 @@ Cadran::Cadran(Software &soft, Train_dynamique &T_D, ETCS_Bord &bord)
 	this->soft = &soft;
 	this->T_D = &T_D;
 
-
 	creation();
 
 }
@@ -461,6 +460,7 @@ void Cadran::convertisseurVitesses()
 	//{
 //
 	//}
+	
 
 }
 

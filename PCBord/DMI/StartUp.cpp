@@ -27,7 +27,7 @@ void StartUp::update()
 	else if(status_STU == "S2")
 	{
 		level_DMI.update();
-		if((*buttons)[15].getactivation() && bord->TrainRI.T_data.getLevel() != "" && bord->TrainRI.T_data.getLevel() != "TVM")
+		if((*buttons)[15].getactivation() && bord->TrainRI.T_data.getLevel() != "")
 		{
 			bord->setGeneralMode("SR");
 			*ecran = "Default";
@@ -35,7 +35,7 @@ void StartUp::update()
 	    if((*buttons)[15].getactivation() && bord->TrainRI.T_data.getLevel() == "TVM")
 		{
 			bord->setGeneralMode("TVM");
-			*ecran = "DefaultTVM";
+			*ecran = "Default";
 		}
 	}
 
