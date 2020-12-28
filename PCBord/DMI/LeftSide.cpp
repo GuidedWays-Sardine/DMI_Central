@@ -157,64 +157,64 @@ void LeftSide::update()
 
 		if (sideBord != 0 && sideBord != 3) {
 			if (indication.at(0) == '3' && indication.at(1) == '0' && indication.at(2) == '0' && indication.at(3) == 'V') {
-				creation_texte("3", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("3", WHITE, 48, soft->getRE()*1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '3' && indication.at(1) == '0' && indication.at(2) == '0' && indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
-				creation_texte("3", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("3", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'V') {
-				creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("7", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("7", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'C' && clockTVM.getElapsedTime() > periodeClignotement / floatdeux) {
-				creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("7", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("7", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '2' && indication.at(1) == '7' && indication.at(2) == '0' && indication.at(3) == 'A') {
-				creation_texte("2", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("7", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("7", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '2' && indication.at(1) == '2' && indication.at(2) == '0' && indication.at(3) == 'E') {
-				creation_texte("2", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("2", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '2' && indication.at(1) == '2' && indication.at(2) == '0' && indication.at(3) == 'A') {
-				creation_texte("2", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("2", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("2", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '1' && indication.at(1) == '6' && indication.at(2) == '0' && indication.at(3) == 'E') {
-				creation_texte("1", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("6", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("1", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("6", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '1' && indication.at(1) == '6' && indication.at(2) == '0' && indication.at(3) == 'A') {
-				creation_texte("1", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("6", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("1", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("6", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '0' && indication.at(1) == '8' && indication.at(2) == '0' && indication.at(3) == 'E') {
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("8", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("8", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '0' && indication.at(1) == '8' && indication.at(2) == '0' && indication.at(3) == 'A') {
-				creation_texte("0", BLACK, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("8", BLACK, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", BLACK, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("8", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", BLACK, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 			else if (indication.at(0) == '0' && indication.at(1) == '0' && indication.at(2) == '0') {
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
-				creation_texte("0", WHITE, 48, 6, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 1 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 3 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
+				creation_texte("0", WHITE, 48, soft->getRE() * 1.33f, V2f(54 + 5 * 37 + 29, 54 + 30 + 191 + 25 + 25), 1);
 			}
 		}
 
@@ -234,6 +234,27 @@ void LeftSide::update()
 	targetDistance(static_cast<int>(bord->TrackRI.SADL.getTargetDistance()));
 	cadran.update();
 
-
+	// affichage BS
 	
+	LS_A_UL.afficher(V2f(640 + (640* soft->getBlackRatio()-640)/2 - 22, 43));
+	LS_DF_F.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 86));
+	LS_I.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 129));
+	SOS_PSH.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 172));
+	SOS_RS.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 215));
+	SOS_DAAT.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 258));
+	SOS_VA.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 302));
+	MAIS_MERDE.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 345));
+	SOS_PZB.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 388));
+	SOS_ZUB.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 - 22, 431));
+
+	LS_QT_DJ.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 43));
+	LS_AUTOR_DJ.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 86));
+	LS_DF_TRA.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 129));
+	LS_SI_AL.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 172));
+	LS_PCO.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 215));
+	LS_DF_F_FP.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 258));
+	SOS_TRI.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 302));
+	EMPTY.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 345));
+	EMPTY.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 388));
+	SOS_INTG.afficher(V2f(640 + (640 * soft->getBlackRatio() - 640) / 2 + 22, 431));
 }
